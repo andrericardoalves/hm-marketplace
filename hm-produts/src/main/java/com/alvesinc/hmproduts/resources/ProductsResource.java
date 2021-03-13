@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alvesinc.hmproduts.entities.Product;
-import com.alvesinc.hmproduts.service.ProductService;
+import com.alvesinc.hmproduts.service.IProductService;
 
 @RestController
 @RequestMapping(value = "/products")
 public class ProductsResource {
 
 	@Autowired
-	private ProductService service;
+	private IProductService service;
 
 	@PostMapping("/create")
 	public ResponseEntity<Product> create(@Valid @RequestBody Product product) {

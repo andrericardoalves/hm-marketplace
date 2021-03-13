@@ -1,7 +1,6 @@
 package com.alvesinc.hmproduts.entities;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,16 +14,21 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Product{
 	
 	@Id
@@ -38,8 +42,7 @@ public class Product{
 	private String description;
 	@CreationTimestamp
 	private LocalDateTime creationDate;
-	@UpdateTimestamp
-	private LocalDateTime modifyDate;
+	
 	
 	@JsonIgnore
 	@ManyToMany
@@ -47,7 +50,7 @@ public class Product{
 		joinColumns = @JoinColumn(name = "product_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id")
 	)
-	private List<Category> categorias = new ArrayList<>();
+	private List<Category> categorias;
 	
 
 }

@@ -1,4 +1,4 @@
-package com.alvesinc.hmproduts.service;
+package com.alvesinc.hmproduts.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.alvesinc.hmproduts.entities.Product;
 import com.alvesinc.hmproduts.repository.ProductRepository;
+import com.alvesinc.hmproduts.service.IProductService;
 
 @Service
-public class ProductService {
+public class ProductService  implements IProductService{
 
 	@Autowired
 	private ProductRepository repository;

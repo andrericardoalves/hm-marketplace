@@ -28,5 +28,5 @@ public class ProductDTO {
 	private String description;
 	@CreationTimestamp
 	private LocalDateTime createdAt;
-	private List<Long> categorias;
+	private List<Long> categories;
 }

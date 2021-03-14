@@ -18,7 +18,7 @@ public class ProductModelMapper {
 					      .name(product.getName())
 					      .description(product.getDescription())
 					      .createdAt(product.getCreatedAt())
-					      .categorias(product.getCategorias().stream().map(c -> c.getId()).collect(Collectors.toList()))
+					      .categories(product.getCategories().stream().map(c -> c.getId()).collect(Collectors.toList()))
 					      .build();
 		return dto;
 	}
@@ -32,7 +32,7 @@ public class ProductModelMapper {
 			      .name(productDTO.getName())
 			      .description(productDTO.getDescription())
 			      .createdAt(productDTO.getCreatedAt())
-			      .categorias(productDTO.getCategorias().stream().map(c -> Category.builder().id(c).build()).collect(Collectors.toList()))
+			      .categories(productDTO.getCategories().stream().map(c -> Category.builder().id(c).build()).collect(Collectors.toList()))
 			      .build();
 		return obj;
 	}

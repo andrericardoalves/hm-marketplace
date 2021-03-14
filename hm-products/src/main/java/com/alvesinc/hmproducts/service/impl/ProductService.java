@@ -55,7 +55,7 @@ public class ProductService implements IProductService {
 	private void updateData(Product newObj, Product obj) {
 		newObj.setName(obj.getName());
 		newObj.setDescription(obj.getDescription());
-		newObj.setCategorias(obj.getCategorias());
+		newObj.setCategories(obj.getCategories());
 	}
 
 	public Page<Product> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {

@@ -1,5 +1,7 @@
 package com.alvesinc.hmproducts.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,8 +27,10 @@ public class News {
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 
-	  private String name;
-
 	  @ManyToOne 
 	  private Category category;
+	  
+	  private LocalDateTime publishedAt;
+	  
+	  private Long totalResults;
 }

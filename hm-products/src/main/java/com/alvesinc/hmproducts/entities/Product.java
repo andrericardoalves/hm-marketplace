@@ -15,8 +15,6 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,15 +40,13 @@ public class Product{
 	private String description;
 	@CreationTimestamp
 	private LocalDateTime createdAt;
-	
-	
-	@JsonIgnore
+		
 	@ManyToMany
 	@JoinTable(name = "product_category",
 		joinColumns = @JoinColumn(name = "product_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id")
 	)
-	private List<Category> categorias;
+	private List<Category> categories;
 	
 
 }

@@ -14,7 +14,6 @@ create table category(
   name varchar(128) not null
 );
 
-alter table product add column category_id int, add constraint fk_product_category foreign key (category_id) references category(id);
 
 create table sale(
   id          int primary key auto_increment,
@@ -33,8 +32,8 @@ create table news(
 )
 
 CREATE TABLE product_category (
-  product_id bigint(20) NOT NULL,
-  category_id bigint(20) NOT NULL,
-  KEY fk_category_id (category_id),
-  KEY fk_product_id (product_id)
+  product_id int NOT NULL,
+  category_id int NOT NULL,
+  foreign key fk_category_id (category_id) references category(id),
+  foreign key fk_product_id (product_id) references product(id)
 );

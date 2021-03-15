@@ -59,8 +59,7 @@ Z = Quantity of news from the product category on the current day
 
 
 ## Data Base
-
-![database](files/hmproducts_ER_Diagram.png)
+![data](https://github.com/andrericardoalves/hm-marketplace/blob/main/hm-products/src/main/resources/data/hmproducts_ER_Diagram.png)
 
 ## Considerations
 

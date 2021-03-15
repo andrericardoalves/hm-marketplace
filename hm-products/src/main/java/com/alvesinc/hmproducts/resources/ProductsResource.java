@@ -38,7 +38,7 @@ public class ProductsResource {
 
 	@ApiOperation("Create Products")
 	@PostMapping("/create")
-	public ResponseEntity<Product> create(@Valid @RequestBody ProductDTO productDTO) {
+	public ResponseEntity<Product> create(@Valid @RequestBody ProductDTO productDTO) throws Exception {
 		Product product = mapper.toEntityObject(productDTO);
 		Product obj = service.create(product);
 		return ResponseEntity.ok(obj);
@@ -47,7 +47,7 @@ public class ProductsResource {
 	
 	@ApiOperation("Find Product by id")
 	@GetMapping(value = "/findById/{id}")
-	public ResponseEntity<Product> findById(@PathVariable Long id) {
+	public ResponseEntity<Product> findById(@PathVariable Long id) throws Exception{
 		Product obj = service.findById(id);
 		return ResponseEntity.ok(obj);
 	}
@@ -61,7 +61,7 @@ public class ProductsResource {
 
 	@ApiOperation("Updade Products")
 	@PutMapping("/update")
-	public ResponseEntity<Product> update(@RequestBody ProductDTO newProduct) {
+	public ResponseEntity<Product> update(@RequestBody ProductDTO newProduct) throws Exception {
 		Product product = mapper.toEntityObject(newProduct);
 		Product obj = service.update(product);
 		return ResponseEntity.ok(obj);
@@ -70,7 +70,7 @@ public class ProductsResource {
 	
 	@ApiOperation("Delete Products by id")
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) throws Exception{
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
@@ -81,7 +81,7 @@ public class ProductsResource {
 			@RequestParam(value="page", defaultValue="0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
 			@RequestParam(value="orderBy", defaultValue="instante") String orderBy, 
-			@RequestParam(value="direction", defaultValue="DESC") String direction) {
+			@RequestParam(value="direction", defaultValue="DESC") String direction) throws Exception {
 		Page<Product> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);
 	}

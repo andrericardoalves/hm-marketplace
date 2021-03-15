@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,5 +29,6 @@ public class ProductDTO {
 	private String description;
 	@CreationTimestamp
 	private LocalDateTime createdAt;
+	@NotEmpty(message = "Categories is mandatory")
 	private List<Long> categories;
 }

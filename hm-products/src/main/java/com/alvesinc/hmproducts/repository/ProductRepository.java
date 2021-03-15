@@ -9,5 +9,6 @@ import com.alvesinc.hmproducts.entities.Product;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 	
+	public Product findProductByName(String name);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.alvesinc.hmproducts.entities.Product;
+import com.alvesinc.hmproducts.expection.BusinessException;
 import com.alvesinc.hmproducts.expection.DataIntegrityException;
 import com.alvesinc.hmproducts.expection.ObjectNotFoundException;
 import com.alvesinc.hmproducts.repository.ProductRepository;
@@ -23,8 +24,21 @@ public class ProductService implements IProductService {
 	private ProductRepository repository;
 
 	public Product create(Product product) {
+	     
+		 if (verifyIfProductExist(product.getName())) {
+		      throw new BusinessException("There is already a product with the name" + product.getName());
+		    }
 		return repository.save(product);
 
+	}
+	
+	public boolean verifyIfProductExist(String name){
+	  Product productPersited = this.findProductByName(name);
+	  return	productPersited != null && productPersited.getName().equalsIgnoreCase(name) ? true : false; 
+	}
+	
+	public Product findProductByName(String name) {
+		return repository.findProductByName(name);
 	}
 
 	public Product findById(Long id) {

@@ -15,7 +15,6 @@ public class CategoriaService implements ICategoriaService {
 	@Autowired
 	private CategoryRepository repositoy;
 	
-	
 	public List<Category> findAll(){
 		return repositoy.findAll();
 	}

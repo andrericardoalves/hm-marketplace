@@ -1,5 +1,6 @@
 package com.alvesinc.hmproducts.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,11 +8,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.alvesinc.hmproducts.dto.ArticlesNewsApiDTO;
 import com.alvesinc.hmproducts.dto.NewsApiDTO;
+import com.alvesinc.hmproducts.dto.ProductsRanking;
+import com.alvesinc.hmproducts.dto.ProductsRankingResponse;
 import com.alvesinc.hmproducts.entities.Category;
 import com.alvesinc.hmproducts.entities.News;
 import com.alvesinc.hmproducts.repository.NewsRepository;
@@ -87,4 +91,16 @@ public class NewsService implements INewsService {
 		
 		return newsApiDTOToday;
 	}
+	
+	public ProductsRankingResponse obtainNewsByOrderByRanking( String name, LocalDate currentDate, Pageable pageable){
+	
+	 List<ProductsRanking> news = repository.obtainNewsByOrderByRanking( name,  currentDate,  pageable);
+	 ProductsRankingResponse obj =  ProductsRankingResponse.builder()
+			 .dataAtual(LocalDateTime.now())
+			 .termoPesquisado(name)
+			 .products(news).build();
+	 
+		return obj;
+	}
+	
 }

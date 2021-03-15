@@ -22,6 +22,10 @@ import com.alvesinc.hmproducts.entities.Product;
 import com.alvesinc.hmproducts.mapper.ProductModelMapper;
 import com.alvesinc.hmproducts.service.IProductService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Products")
 @RestController
 @RequestMapping(value = "/products")
 public class ProductsResource {
@@ -32,6 +36,7 @@ public class ProductsResource {
 	@Autowired
 	private ProductModelMapper mapper;
 
+	@ApiOperation("Create Products")
 	@PostMapping("/create")
 	public ResponseEntity<Product> create(@Valid @RequestBody ProductDTO productDTO) {
 		Product product = mapper.toEntityObject(productDTO);
@@ -39,19 +44,22 @@ public class ProductsResource {
 		return ResponseEntity.ok(obj);
 		
 	}
-
+	
+	@ApiOperation("Find Product by id")
 	@GetMapping(value = "/findById/{id}")
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
 		Product obj = service.findById(id);
 		return ResponseEntity.ok(obj);
 	}
-
+	
+	@ApiOperation("Find All Products")
 	@GetMapping(value = "/findAll")
 	public ResponseEntity<List<Product>> findAll() {
 		List<Product> list = service.findAll();
 		return ResponseEntity.ok(list);
 	}
 
+	@ApiOperation("Updade Products")
 	@PutMapping("/update")
 	public ResponseEntity<Product> update(@RequestBody ProductDTO newProduct) {
 		Product product = mapper.toEntityObject(newProduct);
@@ -59,13 +67,15 @@ public class ProductsResource {
 		return ResponseEntity.ok(obj);
 
 	}
-
+	
+	@ApiOperation("Delete Products by id")
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation("Search products with Pagination")
 	@GetMapping(value = "/findPage")
 	public ResponseEntity<Page<Product>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 

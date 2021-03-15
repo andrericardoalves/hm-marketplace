@@ -14,13 +14,16 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
+@Audited
+@AuditTable(value = "product_audit")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder(toBuilder = true)

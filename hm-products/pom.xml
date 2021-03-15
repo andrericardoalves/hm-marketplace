@@ -68,6 +68,10 @@
 			<version>28.2-jre</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+		</dependency>
 
 		<!-- JUnit 5 Dependencies -->
 		<dependency>

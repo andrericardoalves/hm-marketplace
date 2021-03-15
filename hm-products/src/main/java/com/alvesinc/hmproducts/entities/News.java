@@ -8,12 +8,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@Audited
+@AuditTable(value = "news_audit")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder(toBuilder = true)

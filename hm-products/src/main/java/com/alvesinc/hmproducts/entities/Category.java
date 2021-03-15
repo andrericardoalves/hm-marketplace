@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +22,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@Audited
+@AuditTable(value = "category_audit")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder(toBuilder = true)

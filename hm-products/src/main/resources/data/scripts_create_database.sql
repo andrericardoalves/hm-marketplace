@@ -37,3 +37,5 @@ CREATE TABLE product_category (
   foreign key fk_category_id (category_id) references category(id),
   foreign key fk_product_id (product_id) references product(id)
 );
+
+create database hmuser;
